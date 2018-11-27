@@ -1,11 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
+public class Boundary
+{
+public float xMin, xMax, zMin, zMax;
+}
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float xMin, xMax, zMin, zMax;
+    public Boundary boundary;
+    public float tilt;
+    public GameObject shot;
+    public Transform shotspawn;
+    public float fireRate;
+
+    private float nextFire;
+
+    private void Update()
+    {
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+          //  GameObject clone =
+                Instantiate(shot, shotspawn.position, shotspawn.rotation); //as GameObject;
+        }
+    }
     // Use this for initialization
     private Rigidbody rb;
 
@@ -25,10 +46,11 @@ public class PlayerController : MonoBehaviour
 
         rb.position = new Vector3
             (
-            Mathf.Clamp(rb.position.x, xMin ,xMax),
+            Mathf.Clamp(rb.position.x,boundary. xMin ,boundary.xMax),
             0.0f,
-            Mathf.Clamp(rb.position.z, zMin , zMax)
+            Mathf.Clamp(rb.position.z, boundary.zMin, boundary. zMax)
             );
-            
+        
+        rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tilt);
 	}
 }
