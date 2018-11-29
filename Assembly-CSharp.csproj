@@ -72,6 +72,9 @@
     <Compile Include="Assets\_Complete-Game\Scripts\Done_RandomRotator.cs" />
     <Compile Include="Assets\_Complete-Game\Scripts\Done_WeaponController.cs" />
     <Compile Include="Assets\script\DestroyByBoundary.cs" />
+    <Compile Include="Assets\script\DestroyByContact.cs" />
+    <Compile Include="Assets\script\DestroyByTime.cs" />
+    <Compile Include="Assets\script\GameController.cs" />
     <Compile Include="Assets\script\Mover.cs" />
     <Compile Include="Assets\script\PlayerController.cs" />
     <Compile Include="Assets\script\RandomRotator.cs" />
