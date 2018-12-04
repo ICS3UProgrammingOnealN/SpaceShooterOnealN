@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private float nextFire;
 
+    private AudioSource audioSource;
     private void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
           //  GameObject clone =
                 Instantiate(shot, shotspawn.position, shotspawn.rotation); //as GameObject;
+            audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
         }
     }
     // Use this for initialization
